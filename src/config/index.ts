@@ -4,45 +4,46 @@ export const PRODUCT_CATEGORIES= [
         value:'ui_kits'as const,
         featured:[
             {
-                name:'Editor picks',
+                name:'Favorite Icon Picks',
                 href:'#',
-                imageSrc:'/nav/ui-kits/mixed.jpg',
+                imageSrc:'/nav/icons/bestsellers.jpg',
             },
             {
                 name:'New Arrivals',
                 href:'#',
-                imageSrc:'/nav/ui-kits/blue.jpg',
+                imageSrc:'/nav/icons/new.jpg',
             },
             {
-                name:'Editor picks',
+                name:'Best Selling Icons',
                 href:'#',
-                imageSrc:'/nav/ui-kits/purple.jpg',
+                imageSrc:'/nav/icons/picks.jpg',
+            },
+            
+        ]
+
+    },
+    {
+        label:'Icons',
+        value:'ui-kit'as const,
+        featured:[
+            {
+                name:'Favorite Icon Picks',
+                href:'#',
+                imageSrc:'/nav/ui-kits/bestsellers.jpg',
             },
             {
-                name:'Editor picks',
+                name:'New Arrivals',
                 href:'#',
-                imageSrc:'/nav/ui-kits/purple.jpg',
+                imageSrc:'/nav/ui-kits/new.jpg',
             },
             {
-                name:'Editor picks',
+                name:'Best Selling Icons',
                 href:'#',
-                imageSrc:'/nav/ui-kits/purple.jpg',
+                imageSrc:'/nav/ui-kits/picks.jpg',
             },
-            {
-                name:'Editor picks',
-                href:'#',
-                imageSrc:'/nav/ui-kits/purple.jpg',
-            },
-            {
-                name:'Editor picks',
-                href:'#',
-                imageSrc:'/nav/ui-kits/purple.jpg',
-            },   {
-                name:'Editor picks',
-                href:'#',
-                imageSrc:'/nav/ui-kits/purple.jpg',
-            }
+            
         ]
 
     }
+
 ]
