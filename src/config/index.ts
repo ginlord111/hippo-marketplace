@@ -17,6 +17,30 @@ export const PRODUCT_CATEGORIES= [
                 name:'Editor picks',
                 href:'#',
                 imageSrc:'/nav/ui-kits/purple.jpg',
+            },
+            {
+                name:'Editor picks',
+                href:'#',
+                imageSrc:'/nav/ui-kits/purple.jpg',
+            },
+            {
+                name:'Editor picks',
+                href:'#',
+                imageSrc:'/nav/ui-kits/purple.jpg',
+            },
+            {
+                name:'Editor picks',
+                href:'#',
+                imageSrc:'/nav/ui-kits/purple.jpg',
+            },
+            {
+                name:'Editor picks',
+                href:'#',
+                imageSrc:'/nav/ui-kits/purple.jpg',
+            },   {
+                name:'Editor picks',
+                href:'#',
+                imageSrc:'/nav/ui-kits/purple.jpg',
             }
         ]
 
