@@ -19,7 +19,7 @@ export const PRODUCT_CATEGORIES= [
                 imageSrc:'/nav/icons/picks.jpg',
             },
             
-        ],
+        ]
 
     },
     {

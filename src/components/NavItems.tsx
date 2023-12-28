@@ -23,7 +23,7 @@ const NavItems = () => {
           <NavItem
             isOpen={isOpen}
             handleOpen={handleOpen}
-            Category={product}
+            category={product}
             key={product.label}
             isAnyOpen={isAnyOpen}
           />
