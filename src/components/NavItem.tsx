@@ -42,7 +42,7 @@ const NavItem = ({ Category, handleOpen, isOpen, isAnyOpen }: NavitemProps) => {
             <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
             <div className="col-span-4 col-start-1 grid grid-cols-3 gap-x-8">
               {Category.featured.map((features) => (
-                  <div key={features.name} className="group relative text-base sm:text-sm w-[500px]">
+                  <div key={features.name} className="group relative text-base sm:text-sm">
                   <div className="relative  aspect-video overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                 <Image src={features.imageSrc} 
                 alt="IMAGE" 
@@ -59,8 +59,6 @@ const NavItem = ({ Category, handleOpen, isOpen, isAnyOpen }: NavitemProps) => {
                   
             </div>
             </div> 
-            
-
         </div>
       ) : null}
     </div>
