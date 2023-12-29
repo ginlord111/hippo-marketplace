@@ -18,7 +18,7 @@ const NavItems = () => {
             setActiveIndex(i);
           }
         };
-        const isOpen = i === activeIndex;
+        const isOpen = i === activeIndex 
         return (
           <NavItem
             isOpen={isOpen}
@@ -26,6 +26,7 @@ const NavItems = () => {
             category={product}
             key={product.label}
             isAnyOpen={isAnyOpen}
+       
           />
         );
       })}
