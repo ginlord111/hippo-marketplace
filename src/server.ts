@@ -1,7 +1,7 @@
 import express from 'express'
 import type { Payload } from 'payload';
 import { getPayloadClient } from './get-payload';
-import { nextAppHandler } from './next-utils';
+import { nextApp, nextAppHandler } from './next-utils';
 
 
 
@@ -18,12 +18,17 @@ const start = async() =>{
             }
         }
     })
+    app.use((req, res) => nextAppHandler(req, res))
+    nextApp.prepare().then(() =>{
+        app.listen(PORT, async () =>{
+            
+        })
+    })
 }
 start()
 
-app.use((req, res) => nextAppHandler(req, res))
 
 
 
-app.listen(PORT)
+
  
