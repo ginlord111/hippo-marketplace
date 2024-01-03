@@ -25,6 +25,7 @@ const page = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
+      password:'',
     },
   });
 
@@ -79,7 +80,7 @@ const page = () => {
                       name="password"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>pASSWORD</FormLabel>
+                          <FormLabel>Password</FormLabel>
                           <FormControl>
                             <Input placeholder="Password" {...field} type="password" />
                           </FormControl>
@@ -90,6 +91,7 @@ const page = () => {
                   </div>  
                   
                 </div>
+                <Button type="submit">Submit</Button>
               </form>
             </Form>
           </div>
