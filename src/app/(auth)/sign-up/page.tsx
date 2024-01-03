@@ -13,7 +13,6 @@ import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -24,7 +23,7 @@ const page = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      username:"",
       password:'',
     },
   });
@@ -55,8 +54,8 @@ const page = () => {
 
           <div className="grid gap-6">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)}>
-                <div className="grid gap-2">
+              <form onSubmit={form.handleSubmit(onSubmit)} >
+                <div className=" grid gap-2 md:px-[200px]">
                      {/* EMAIL FIELD */}
                   <div className="grid gap-1 py-2">
                     <FormField
@@ -90,8 +89,8 @@ const page = () => {
                     />
                   </div>  
                   
+                <Button type="submit" className="w-full md:w-[50%] mx-auto">Submit</Button>
                 </div>
-                <Button type="submit">Submit</Button>
               </form>
             </Form>
           </div>
