@@ -14,7 +14,6 @@ const createContext= ({req, res}:trpcExpress.CreateExpressContextOptions) => {
 }
 
 const start = async() =>{
-
     const payload = await getPayloadClient({
         initOption:{
             express:app,

@@ -1,7 +1,12 @@
 import { CollectionConfig } from "payload/types";
 
-const Users: CollectionConfig = {
-  slug: "users",
+export const Users: CollectionConfig = {
+  slug: "user",
+  auth:true,
+  access:{
+    read:() => true,
+    create:() =>true,
+  },
   fields: [
     {
       name: "role",
