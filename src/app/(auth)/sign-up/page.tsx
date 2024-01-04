@@ -55,7 +55,7 @@ const page = () => {
           <div className="grid gap-6">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} >
-                <div className=" grid gap-2 md:px-[200px]">
+                <div className=" grid gap-2 lg:px-[200px]">
                      {/* EMAIL FIELD */}
                   <div className="grid gap-1 py-2">
                     <FormField
