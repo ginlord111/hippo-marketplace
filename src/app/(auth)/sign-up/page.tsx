@@ -23,7 +23,7 @@ const page = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username:"",
+      usernameOremail:"",
       password:'',
     },
   });
@@ -60,7 +60,7 @@ const page = () => {
                   <div className="grid gap-1 py-2">
                     <FormField
                       control={form.control}
-                      name="username"
+                      name="usernameOremail"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Username</FormLabel>

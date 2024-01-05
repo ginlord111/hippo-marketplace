@@ -7,14 +7,14 @@ import { TRPCError } from '@trpc/server'
 export const authRouter = router({
     createPayloadUser:publicProcedure.input(formSchema).
     mutation(async ({input}) =>{
-        const {username, password} = input
+        const {usernameOremail, password} = input
         const payload = await getPayloadClient()
 
         const {docs:user} = await payload.find({
             collection:'user',
             where:{
-                username:{
-                    username:username
+                usernameOremail:{
+                    usernameOremail:usernameOremail
                 }
             }
         })
@@ -24,8 +24,13 @@ export const authRouter = router({
 
         await payload.create({
             collection:'users',
-            data:{}
+            data:{
+                usernameOremail,
+                password,
+                role:'user',
+            }
         })
+        return {success:true,sentToEmail:usernameOremail}
     })
  
 
