@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { trpc } from "@/trpc";
 import {
   Form,
   FormControl,
@@ -27,7 +28,7 @@ const page = () => {
       password:'',
     },
   });
-
+const {}=trpc.auth.createPayloadUser.useMutation
   //submit function
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
