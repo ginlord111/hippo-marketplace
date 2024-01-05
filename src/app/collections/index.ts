@@ -10,6 +10,8 @@ export const Users: CollectionConfig = {
   fields: [
     {
       name: "role",
+      required:true,
+      defaultValue:'user',
       type: "select",
       options: [
         {
