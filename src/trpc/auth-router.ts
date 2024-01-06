@@ -1,6 +1,7 @@
-import { formSchema } from '@/app/(auth)/sign-up/constant'
+
+import { formSchema } from '../app/(auth)/sign-up/constant'
 import { publicProcedure, router } from './trpc'
-import { getPayloadClient } from '@/get-payload'
+import { getPayloadClient } from '../get-payload'
 import { TRPCError } from '@trpc/server'
 
 
@@ -13,24 +14,23 @@ export const authRouter = router({
         const {docs:user} = await payload.find({
             collection:'user',
             where:{
-                usernameOremail:{
-                    usernameOremail:usernameOremail
+             email:{
+                  equals:usernameOremail,
                 }
-            }
+            },
         })
         if(user.length!==0){
             throw new TRPCError ({code:'PARSE_ERROR'})
         }
-
         await payload.create({
-            collection:'users',
-            data:{
-                usernameOremail,
-                password,
-                role:'user',
-            }
+           collection:'user',
+        data:{
+            email:usernameOremail,
+            password:password,
+            role:'user',
+        }
         })
-        return {success:true,sentToEmail:usernameOremail}
+        return {succes:true, sentToEmail:usernameOremail};
     })
  
 

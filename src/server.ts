@@ -10,7 +10,7 @@ const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
 const createContext= ({req, res}:trpcExpress.CreateExpressContextOptions) => {
-    return {req, res};
+    return {res, req}
 }
 
 const start = async() =>{
@@ -22,7 +22,7 @@ const start = async() =>{
             }
         }
     })
-    app.use('api/trpc', trpcExpress.createExpressMiddleware({
+    app.use('/api/trpc', trpcExpress.createExpressMiddleware({
         router:appRouter,
         createContext:createContext,
 

@@ -28,10 +28,14 @@ const page = () => {
       password:'',
     },
   });
-const {}=trpc.auth.createPayloadUser.useMutation
-  //submit function
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+
+
+
+  const {mutate, isLoading}=trpc.auth.createPayloadUser.useMutation({})
+const onSubmit = ({usernameOremail, password}: z.infer<typeof formSchema>) => {
+    mutate({usernameOremail, password});
+
+    console.log(mutate)
   }
 
   return (
