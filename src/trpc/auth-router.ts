@@ -3,6 +3,7 @@ import { formSchema } from '../app/(auth)/sign-up/constant'
 import { publicProcedure, router } from './trpc'
 import { getPayloadClient } from '../get-payload'
 import { TRPCError } from '@trpc/server'
+import { z } from 'zod'
 
 
 export const authRouter = router({
@@ -31,7 +32,20 @@ export const authRouter = router({
         }
         })
         return {succes:true, sentToEmail:usernameOremail};
-    })
+    }),
  
-
+    verifyEmail:publicProcedure.input(z.object({token:z.string()})).
+    mutation(async ({input}) => {
+    const {token } = input 
+        const payload = await getPayloadClient()
+     const isVerified =   payload.verifyEmail({
+            collection:'user',
+            token:token
+        })
+        if (!isVerified){
+            throw new TRPCError({code:'UNAUTHORIZED'})
+        }
+        return {sucess:true}
+                        
+    })
 })
