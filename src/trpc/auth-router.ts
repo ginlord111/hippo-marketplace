@@ -21,7 +21,7 @@ export const authRouter = router({
             },
         })
         if(user.length!==0){
-            throw new TRPCError ({code:'PARSE_ERROR'})
+            throw new TRPCError ({code:'CONFLICT'}) // WILL THROW THE ERROR IF THE EMAIL IS ALREADY USED
         }
         await payload.create({
            collection:'user',
@@ -35,7 +35,7 @@ export const authRouter = router({
     }),
  
     verifyEmail:publicProcedure.input(z.object({token:z.string()})).
-    mutation(async ({input}) => {
+    query(async ({input}) => {
     const {token } = input 
         const payload = await getPayloadClient()
      const isVerified =   payload.verifyEmail({
@@ -46,6 +46,7 @@ export const authRouter = router({
             throw new TRPCError({code:'UNAUTHORIZED'})
         }
         return {sucess:true}
-                        
+
     })
+    /// useMutation is used to mutate or change the data while the query is just reading it
 })

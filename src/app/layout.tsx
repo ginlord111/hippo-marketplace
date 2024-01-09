@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
+import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
+   <Toaster richColors  position="top-center"/>
       <body
         className={cn("relative h-full font-sans antialiased", inter.className)}
       >
@@ -30,6 +32,7 @@ export default function RootLayout({
           </Providers>
         </main>
       </body>
+   
     </html>
   );
 }

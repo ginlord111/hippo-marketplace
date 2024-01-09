@@ -11,6 +11,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { trpc } from "@/trpc";
+import {toast} from 'sonner'
 import {
   Form,
   FormControl,
@@ -19,6 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useRouter } from "next/router";
 
 const page = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -29,9 +31,20 @@ const page = () => {
     },
   });
 
+const router = useRouter()
 
-
-  const {mutate, isLoading}=trpc.auth.createPayloadUser.useMutation({})
+  const {mutate, isLoading}=trpc.auth.createPayloadUser.useMutation({
+    onError:(err)=>{
+      if(err.data?.code === 'CONFLICT'){
+        toast.error('Email is already exist')
+      }
+      toast.error('Something went wrong') // FOR UNKNOWN OTHER ERROR LIKE SERVER ERROR
+    },
+    onSuccess:(({sentToEmail}) => {
+      toast.success(`Verification link was sent to ${sentToEmail}`)
+      router.push('/verify-email')
+    }),
+  })
 const onSubmit = ({usernameOremail, password}: z.infer<typeof formSchema>) => {
     mutate({usernameOremail, password});
 
