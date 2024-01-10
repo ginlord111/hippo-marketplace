@@ -25,8 +25,17 @@ import {
 const page = () => {
     const searchParams = useSearchParams()
     const router = useRouter();
-    const isSeller = searchParams.get("as") === 'selller'
+    const isSeller = searchParams.get("as") === 'seller'
     const origin = searchParams.get('origin')
+
+    const LoginAsSeller = () =>{
+      router.push('?as=seller')
+    }
+      
+    const LoginAsCustomer = () =>{
+      router.replace('/sign-in', undefined)
+    }
+
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -36,31 +45,46 @@ const page = () => {
     },
   });
 
-  const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({
-    onError: (err) => {
-      if (err.data?.code === "CONFLICT") {
-        toast.error("Email is already exist");
-        return;
-      }
-      toast.error("Something went wrong"); // FOR UNKNOWN OTHER ERROR LIKE SERVER ERROR
-    },
+  const {mutate: signIn, isLoading, } = trpc.auth.signInUser.useMutation({
+   onSuccess:() =>{
+    toast.success('Signed in Succesfully')
+    router.refresh()
+
+    if(origin){
+      router.push(`/${origin}`)
+      return;
+    }
+    if(isSeller){
+      router.push('/sell')
+      return;
+    }
+
+    router.push('/')
+   },
+   onError:(err)=>{
+    if(err.data?.code  === 'UNAUTHORIZED'){
+     toast.error('Invalid email or password')
+     return ;
+    }
+   }
+
+   
   });
   const onSubmit = ({
     usernameOremail,
     password,
   }: z.infer<typeof formSchema>) => {
-    mutate({ usernameOremail, password });
+    signIn({ usernameOremail, password });
 
-    console.log(mutate);
   };
 
   return (
     <>
-      <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-5">
-        <div className="mx-auto flex w-full flex-col justify-center space-y-3 ">
+      <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
+        <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col items-center space-y-3 text-center">
             <Icons.logo className="h-20 w-20" />
-            <div className="text-2xl font-bold">Sign in an account</div>
+            <div className="text-2xl font-bold whitespace-nowrap">Sign in {isSeller ?  (<span>to your seller account</span>) : (<span>to your customer account</span>)}</div>
             <Link
               href="sign-in"
               className={buttonVariants({
@@ -76,7 +100,7 @@ const page = () => {
           <div className="grid gap-6">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
-                <div className=" grid gap-2 lg:px-[200px]">
+                <div className=" grid gap-2 ">
                   {/* EMAIL FIELD */}
                   <div className="grid gap-1 py-2">
                     <FormField
@@ -114,7 +138,7 @@ const page = () => {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full md:w-[50%] mx-auto">
+                  <Button type="submit" className="">
                     Sign in
                   </Button>
                 </div>
@@ -130,6 +154,23 @@ const page = () => {
                 <span className="text-muted-foreground text-xs px-3 bg-background">or</span>
                 </div>
             </div>
+            {isSeller ? (
+            <Button 
+            className={buttonVariants({variant:'secondary'})}
+            onClick={LoginAsCustomer}
+            disabled={isLoading}
+            >
+              Continue as Customer
+            </Button>
+            ) :(
+              <Button 
+              className={buttonVariants({variant:'secondary'})}
+              onClick={LoginAsSeller}
+              disabled={isLoading}
+              >
+              Continue as Seller
+              </Button>
+            )}
           </div>
         </div>
       </div>

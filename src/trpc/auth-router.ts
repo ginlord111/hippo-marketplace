@@ -49,7 +49,8 @@ export const authRouter = router({
         /// useMutation is used to mutate or change the data while the query is just reading it
     }),
     signInUser:publicProcedure.input(formSchema).
-    mutation(async({input} )=> {
+    mutation(async({input, ctx} )=> {
+        const{res} = ctx
         const {usernameOremail, password} = input
         const payload = await getPayloadClient()
         try {
@@ -59,6 +60,7 @@ export const authRouter = router({
                 email:usernameOremail,
                 password:password,
             },
+            res,
             })
             return {succes:true, login}
         } catch (error) {
