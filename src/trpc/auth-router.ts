@@ -1,5 +1,4 @@
-
-import { formSchema } from '../app/(auth)/sign-up/constant'
+import { formSchema } from '../app/(auth)/constant'
 import { publicProcedure, router } from './trpc'
 import { getPayloadClient } from '../get-payload'
 import { TRPCError } from '@trpc/server'
@@ -47,6 +46,6 @@ export const authRouter = router({
         }
         return {sucess:true}
 
+        /// useMutation is used to mutate or change the data while the query is just reading it
     })
-    /// useMutation is used to mutate or change the data while the query is just reading it
 })
