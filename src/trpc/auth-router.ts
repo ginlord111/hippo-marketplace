@@ -47,5 +47,22 @@ export const authRouter = router({
         return {sucess:true}
 
         /// useMutation is used to mutate or change the data while the query is just reading it
+    }),
+    signInUser:publicProcedure.input(formSchema).
+    mutation(async({input} )=> {
+        const {usernameOremail, password} = input
+        const payload = await getPayloadClient()
+        try {
+            const login = await payload.login({
+            collection:'user',
+            data:{
+                email:usernameOremail,
+                password:password,
+            },
+            })
+            return {succes:true, login}
+        } catch (error) {
+          return new TRPCError({code:'UNAUTHORIZED'})
+        }
     })
 })

@@ -26,6 +26,7 @@ const page = () => {
     const searchParams = useSearchParams()
     const router = useRouter();
     const isSeller = searchParams.get("as") === 'selller'
+    const origin = searchParams.get('origin')
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
