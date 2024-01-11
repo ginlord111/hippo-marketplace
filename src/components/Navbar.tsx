@@ -3,7 +3,7 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
 import { Icons } from "./Icons";
 import NavItems from "./NavItems";
-import { buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import Cart from "./Cart";
 import { getServerSide } from "../lib/getServerSide";
 import {cookies} from 'next/headers'
@@ -33,7 +33,7 @@ const Navbar = async () => {
               <Link className={buttonVariants({variant:'ghost'})} href='/sign-in'>Sign In</Link>)
               
               }
-              {user ? <p>Log Out</p> : (
+              {user ? <Button className={buttonVariants({variant:'secondary'})}>Log Out </Button> : (
                 <Link href='/sign-up' className={buttonVariants({variant:'ghost'})}>Create Account</Link>
               )}
               <div className="ml-4 flow-root">
