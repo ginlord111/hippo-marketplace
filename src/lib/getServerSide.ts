@@ -4,14 +4,16 @@ import { User } from "../payload-types"
 export  const getServerSide = async (cookies:NextRequest['cookies'] | ReadonlyRequestCookies  ) =>{
     const token = cookies.get('payload-token')?.value
     
-    const userData = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/me`, {
+    const meRes = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/me`, {
+        method:'GET',
+        credentials:'include',
         headers:{
-            Authorization: `JWT ${token}`,
+            Authorization:`JWT ${token}`,
+            'Content-Type': 'application/json',
         },
-
 })
-    const {user} = await userData.json() as {user:User | null}
+const {user} =await meRes.json() as {user:User | null}
 
-        return {user}
+return {user}
 }
 
