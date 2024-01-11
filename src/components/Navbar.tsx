@@ -7,10 +7,11 @@ import { Button, buttonVariants } from "./ui/button";
 import Cart from "./Cart";
 import { getServerSide } from "../lib/getServerSide";
 import {cookies} from 'next/headers'
+import UserDropDown from "./UserDropDown";
+
 const Navbar = async () => {
   const cookie = cookies()
-  const user= await getServerSide(cookie);
-  console.log(user)
+  const {user}= await getServerSide(cookie);
   return (
      <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">
       <header className="relative bg-white">
@@ -29,7 +30,9 @@ const Navbar = async () => {
               </div>
               <div className="ml-auto flex">
              <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-4">
-              {user ? null : (
+              {user ? (
+                <UserDropDown user={user}/>
+              ): (
               <Link className={buttonVariants({variant:'ghost'})} href='/sign-in'>Sign In</Link>)
               
               }

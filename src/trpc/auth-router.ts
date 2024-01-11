@@ -66,5 +66,6 @@ export const authRouter = router({
         } catch (error) {
           return new TRPCError({code:'UNAUTHORIZED'})
         }
-    })
+    }),
+    
 })
