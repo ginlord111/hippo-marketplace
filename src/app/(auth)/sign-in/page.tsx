@@ -160,7 +160,7 @@ const page = () => {
             onClick={LoginAsCustomer}
             disabled={isLoading}
             >
-              Continue as Customer
+            Sign in as Customer
             </Button>
             ) :(
               <Button 
@@ -168,7 +168,7 @@ const page = () => {
               onClick={LoginAsSeller}
               disabled={isLoading}
               >
-              Continue as Seller
+             Sign in as Seller
               </Button>
             )}
           </div>
