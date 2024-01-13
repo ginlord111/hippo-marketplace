@@ -14,7 +14,7 @@ export const Users: CollectionConfig = {
     create: () => true,
   },
   fields: [
-    {
+    { 
       name: "role",
       required: true,
       defaultValue: "user",
