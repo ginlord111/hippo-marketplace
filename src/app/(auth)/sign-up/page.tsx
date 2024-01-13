@@ -53,8 +53,8 @@ const onSubmit = ({usernameOremail, password}: z.infer<typeof formSchema>) => {
 
   return (
     <>
-      <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-5">
-        <div className="mx-auto flex w-full flex-col justify-center space-y-3 ">
+      <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
+        <div className="mx-auto flex w-full flex-col justify-center space-y-3 sm:w-[350px] ">
           <div className="flex flex-col items-center space-y-3 text-center">
             <Icons.logo className="h-20 w-20" />
             <div className="text-2xl font-bold">Create an account</div>
@@ -73,7 +73,7 @@ const onSubmit = ({usernameOremail, password}: z.infer<typeof formSchema>) => {
           <div className="grid gap-6">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} >
-                <div className=" grid gap-2 lg:px-[200px]">
+                <div className=" grid gap-2 ">
                      {/* EMAIL FIELD */}
                   <div className="grid gap-1 py-2">
                     <FormField
@@ -107,7 +107,7 @@ const onSubmit = ({usernameOremail, password}: z.infer<typeof formSchema>) => {
                     />
                   </div>  
                   
-                <Button type="submit" className="w-full md:w-[50%] mx-auto">Sign up</Button>
+                <Button type="submit">Sign up</Button>
                 </div>
               </form>
             </Form>

@@ -7,6 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuLabel,
 } from "./ui/dropdown-menu";
 import Link from "next/link";
 import { User } from "@/payload-types";
@@ -18,18 +19,18 @@ const UserDropDown = ({ user }: { user: User }) => {
         <CircleUserRound className="w-[30px] h-[30px] text-muted-foreground" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="bg-white cursor-pointer">
-        <div className="flex items-center justify-center text-black p-3 text-xs font-semibold">
-          <div className="flex flex-col items-center">
-            <p>{user.email}</p>
+        <div className="flex items-center justify-center text-black text-xs font-semibold">
+            <DropdownMenuLabel>    
+           {user.email}
+            </DropdownMenuLabel>
+           </div>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem className="font-semibold text-xs">
                 <Link href='/sell'>Seller Dashboard</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={LogoutUser()}>
+            </DropdownMenuItem >
+            <DropdownMenuItem className="font-semibold text-xs" onClick={LogoutUser()} >
                  Log out
             </DropdownMenuItem>
-          </div>
-        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -11,7 +11,7 @@ import UserDropDown from "./UserDropDown";
 
 const Navbar = async () => {
   const cookie = cookies()
-  const {user}= await getServerSide(cookie);
+  const {user}= await getServerSide(cookie); // PASSING THE COOKIES IN CUSTOM HOOK COMPONENT WITH THE SAME TYPE
   return (
      <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">
       <header className="relative bg-white">

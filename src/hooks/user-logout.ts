@@ -18,13 +18,13 @@ export const LogoutUser = () => {
       if (!res.ok) {
         throw new Error();
       }
-     toast.success("Sign out succesfully")
-      router.push("/sign-in")
+      toast.success("Sign out succesfully");
+      router.push("/sign-in");
       router.refresh();
     } catch (err) {
       console.log(err);
       return toast.error("Log out failed. Try again");
     }
   };
-        return signOut
+  return signOut;
 };
