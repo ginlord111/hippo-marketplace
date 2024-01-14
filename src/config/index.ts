@@ -1,4 +1,4 @@
-export const PRODUCT_CATEGORIES= [
+ const PRODUCT_CATEGORIES= [
     {
         label:'Icons',
         value:'ui_kits'as const,
@@ -47,3 +47,4 @@ export const PRODUCT_CATEGORIES= [
     }
 
 ]
+export default PRODUCT_CATEGORIES

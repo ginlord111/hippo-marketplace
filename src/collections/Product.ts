@@ -1,4 +1,4 @@
-import { PRODUCT_CATEGORIES } from "@/config";
+import PRODUCT_CATEGORIES from "../config/index"
 import { CollectionConfig } from "payload/types";
 
 export const Product: CollectionConfig = {

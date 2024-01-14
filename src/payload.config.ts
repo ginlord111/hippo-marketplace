@@ -5,11 +5,11 @@ import path from "path";
 import { buildConfig } from "payload/config";
 
 import dotenv from 'dotenv'
-import { Users } from "./collections/User";
-import { Product } from "./collections/Product";
 dotenv.config({
     path:path.resolve(__dirname, '../.env')
 })
+import { Users } from "./collections/User";
+import { Product } from "./collections/Product";
 export default buildConfig({
     serverURL:process.env.NEXT_PUBLIC_SERVER_URL || '',
     collections:[Users, Product],
