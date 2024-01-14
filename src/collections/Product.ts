@@ -50,6 +50,69 @@ export const Product: CollectionConfig = {
       relationTo:"product_files",
       hasMany:false,
     },
+    {
+      name:"approvedForSale",
+      type:"select",
+      options:[
+        {
+          label:"Pending Verification",
+          value:"Pending"
+        },
+        {
+          label:"Approved",
+          value:"Approved"
+        },
+        {
+          label:"Denied",
+          value:"Denied",
+        },
+      ],
+      defaultValue:"Pending",
+      access:{
+        create:({req})=>(req.user.role === "admin"),
+        read:({req})=>(req.user.role === "admin"),
+        update:({req})=>(req.user.role === "admin"),
+      }
+    },
+    {
+      name:"productID",
+      type:"text",
+      required:true,
+      access:{
+        create:()=>false,
+        read:()=>false,
+        update:()=>false,
+      },
+      admin:{
+        hidden:true,
+      },
+    },
+    {
+      name:"stripeID",
+      type:"text",
+      required:true,
+      access:{
+        create:()=>false,
+        read:()=>false,
+        update:()=>false,
+      },
+      admin:{
+        hidden:true,
+      },
+    },
+    {
+      name:"images",
+      type:"array",
+      label:"Product Images",
+      fields:[
+        {
+          name:"images",
+          relationTo:"media",
+          type:"upload",
+          required:true,
+        },
+      ]
+    }
     
   ],
 };
