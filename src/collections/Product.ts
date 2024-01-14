@@ -43,13 +43,13 @@ export const Product: CollectionConfig = {
       required:true,
       options:PRODUCT_CATEGORIES.map(({label, value}) => ({label, value}))
     },
-    {
-      name:"product_files",
-      type:"relationship",
-      required:true,
-      relationTo:"product_files",
-      hasMany:false,
-    },
+    // {
+    //   name:"product_files",
+    //   type:"relationship",
+    //   required:true,
+    //   relationTo:"product_files",
+    //   hasMany:false,
+    // },
     {
       name:"approvedForSale",
       type:"select",
