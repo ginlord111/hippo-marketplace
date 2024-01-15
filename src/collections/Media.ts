@@ -22,8 +22,9 @@ export const Media:CollectionConfig = {
     slug:"media",
     hooks:{
         beforeChange:[
-           ({req, data})=> ({...data, user:req.user.id})
+           ({req, data})=> ({...data, user:req.user.id}),
         ]
+        
     },
     access:{
         read:async({req})=>{
@@ -34,7 +35,10 @@ export const Media:CollectionConfig = {
         }
             return isAdminOrUserHasAccess({req})
 
-        }
+        },
+        delete:({req})=> isAdminOrUserHasAccess({req}),
+        update:({req}) => isAdminOrUserHasAccess({req}),
+        
     },
     upload:{
         staticURL:'/media',
