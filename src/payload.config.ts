@@ -17,6 +17,7 @@ export default buildConfig({
     routes:{
         admin:'/sell'
     },
+
     
     admin:{
         user:'user',
