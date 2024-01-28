@@ -7,7 +7,7 @@ const yourOwnOrder: Access = ({ req: { user } }) => {
     },
   };
 };
-const Orders: CollectionConfig = {
+export const Orders: CollectionConfig = {
   slug: "orders",
   admin: {
     useAsTitle: "Your Orders",
@@ -15,6 +15,9 @@ const Orders: CollectionConfig = {
   },
   access: {
     read: yourOwnOrder,
+    create:({req})=>req.user.role === 'admin',
+    update:({req})=>req.user.role === "admin",
+    delete:({req})=>req.user.role === "admin",
   },
   fields: [
     {
