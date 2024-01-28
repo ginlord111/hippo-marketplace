@@ -2,7 +2,7 @@
 import { Icons } from "@/components/Icons";
 import { buttonVariants } from "@/components/ui/button";
 import { formSchema } from "../constant";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight,Loader2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -138,7 +138,7 @@ toast.success('Signed in successfully')
                   </div>
 
                   <Button type="submit" className="">
-                    Sign in
+               {isLoading ? <Loader2 className="w-4 h-4 animate-spin"/> : <span>Sign in</span>}
                   </Button>
                 </div>
               </form>
