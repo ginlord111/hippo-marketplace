@@ -2,7 +2,7 @@
 import { Icons } from "@/components/Icons";
 import { buttonVariants } from "@/components/ui/button";
 import { formSchema } from "../constant";
-import { ArrowRight,Loader2 } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,19 +23,18 @@ import {
 } from "@/components/ui/form";
 
 const page = () => {
-    const searchParams = useSearchParams()
-    const router = useRouter();
-    const isSeller = searchParams.get("as") === 'seller'
-    const origin = searchParams.get('origin')
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const isSeller = searchParams.get("as") === "seller";
+  const origin = searchParams.get("origin");
 
-    const LoginAsSeller = () =>{
-      router.push('?as=seller')
-    }
-      
-    const LoginAsCustomer = () =>{
-      router.replace('/sign-in', undefined)
-    }
+  const LoginAsSeller = () => {
+    router.push("?as=seller");
+  };
 
+  const LoginAsCustomer = () => {
+    router.replace("/sign-in", undefined);
+  };
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,36 +44,33 @@ const page = () => {
     },
   });
 
-  const {mutate: signIn, isLoading} = trpc.auth.signInUser.useMutation({
-   onSuccess:() =>{
-toast.success('Signed in successfully')
-    if(origin){
-      router.push(`/${origin}`)
-      return;
-    }
-    if(isSeller){
-      router.push('/sell')
-      return;
-    }
+  const { mutate: signIn, isLoading } = trpc.auth.signInUser.useMutation({
+    onSuccess: () => {
+      toast.success("Signed in successfully");
+      if (origin) {
+        router.push(`/${origin}`);
+        return;
+      }
+      if (isSeller) {
+        router.push("/sell");
+        return;
+      }
 
-    router.push('/')
-    router.refresh()
-   },
-   onError:(err)=>{
-    if(err.data?.code  === 'UNAUTHORIZED'){
-     toast.error('Invalid email or password')
-     return ;
-    }
-   }
-
-   
+      router.push("/");
+      router.refresh();
+    },
+    onError: (err) => {
+      if (err.data?.code === "UNAUTHORIZED") {
+        toast.error("Invalid email or password");
+        return;
+      }
+    },
   });
   const onSubmit = ({
     usernameOremail,
     password,
   }: z.infer<typeof formSchema>) => {
     signIn({ usernameOremail, password });
-
   };
 
   return (
@@ -83,7 +79,14 @@ toast.success('Signed in successfully')
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col items-center space-y-3 text-center">
             <Icons.logo className="h-20 w-20" />
-            <div className="text-2xl font-bold whitespace-nowrap">Sign in {isSeller ?  (<span>to your seller account</span>) : (<span>to your customer account</span>)}</div>
+            <div className="text-2xl font-bold whitespace-nowrap">
+              Sign in{" "}
+              {isSeller ? (
+                <span>to your seller account</span>
+              ) : (
+                <span>to your customer account</span>
+              )}
+            </div>
             <Link
               href="sign-in"
               className={buttonVariants({
@@ -95,7 +98,6 @@ toast.success('Signed in successfully')
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-
           <div className="grid gap-6">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -138,36 +140,40 @@ toast.success('Signed in successfully')
                   </div>
 
                   <Button type="submit" className="">
-               {isLoading ? <Loader2 className="w-4 h-4 animate-spin"/> : <span>Sign in</span>}
+                    {isLoading ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <span>Sign in</span>
+                    )}
                   </Button>
                 </div>
               </form>
             </Form>
             <div className="relative">
-                <div className="flex items-center inset-0 absolute">
-             <span className=" border-t w-full "> </span>
-            
-                </div>
-                <div className="relative flex justify-center items-center uppercase">
-
-                <span className="text-muted-foreground text-xs px-3 bg-background">or</span>
-                </div>
+              <div className="flex items-center inset-0 absolute">
+                <span className=" border-t w-full "> </span>
+              </div>
+              <div className="relative flex justify-center items-center uppercase">
+                <span className="text-muted-foreground text-xs px-3 bg-background">
+                  or
+                </span>
+              </div>
             </div>
             {isSeller ? (
-            <Button 
-            className={buttonVariants({variant:'secondary'})}
-            onClick={LoginAsCustomer}
-            disabled={isLoading}
-            >
-            Sign in as Customer
-            </Button>
-            ) :(
-              <Button 
-              className={buttonVariants({variant:'secondary'})}
-              onClick={LoginAsSeller}
-              disabled={isLoading}
+              <Button
+                className={buttonVariants({ variant: "secondary" })}
+                onClick={LoginAsCustomer}
+                disabled={isLoading}
               >
-             Sign in as Seller
+                Sign in as Customer
+              </Button>
+            ) : (
+              <Button
+                className={buttonVariants({ variant: "secondary" })}
+                onClick={LoginAsSeller}
+                disabled={isLoading}
+              >
+                Sign in as Seller
               </Button>
             )}
           </div>
