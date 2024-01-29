@@ -33,5 +33,15 @@ export const Orders: CollectionConfig = {
       },
       required: true,
     },
+    {
+      name:'user',
+      type:"relationship",
+      relationTo:'user',
+      required:true,
+      hasMany:true,
+      admin: {
+        hidden: true,
+      },
+    }
   ],
 };
