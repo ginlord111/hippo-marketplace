@@ -80,7 +80,7 @@ const page = () => {
           <div className="flex flex-col items-center space-y-3 text-center">
             <Icons.logo className="h-20 w-20" />
             <div className="text-2xl font-bold whitespace-nowrap">
-              Sign in{" "}
+              Sign in
               {isSeller ? (
                 <span>to your seller account</span>
               ) : (
@@ -88,7 +88,7 @@ const page = () => {
               )}
             </div>
             <Link
-              href="sign-in"
+              href="sign-up"
               className={buttonVariants({
                 variant: "link",
                 className: "gap-1",
