@@ -15,9 +15,9 @@ export const Orders: CollectionConfig = {
   },
   access: {
     read: yourOwnOrder,
-    create:({req})=>req.user.role === 'admin',
-    update:({req})=>req.user.role === "admin",
-    delete:({req})=>req.user.role === "admin",
+    create: ({ req }) => req.user.role === "admin",
+    update: ({ req }) => req.user.role === "admin",
+    delete: ({ req }) => req.user.role === "admin",
   },
   fields: [
     {
@@ -34,14 +34,21 @@ export const Orders: CollectionConfig = {
       required: true,
     },
     {
-      name:'user',
-      type:"relationship",
-      relationTo:'user',
-      required:true,
-      hasMany:true,
+      name: "user",
+      type: "relationship",
+      relationTo: "user",
+      required: true,
+      hasMany: true,
       admin: {
         hidden: true,
       },
-    }
+    },
+    {
+      name: "product",
+      type: "relationship",
+      relationTo: "product",
+      hasMany: true,
+      required: true,
+    },
   ],
 };
