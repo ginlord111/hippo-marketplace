@@ -3,7 +3,7 @@ import { title } from "process";
 import React from "react";
 import { buttonVariants } from "./ui/button";
 interface ProductReelTypes {
-  title: string;
+  title?: string;
   href: string;
 }
 const ProductReel = (props: ProductReelTypes) => {
@@ -11,7 +11,7 @@ const ProductReel = (props: ProductReelTypes) => {
   return (
     <section>
       <div className="flex justify-between px-20 ">
-        <h1 className="font-bold text-2xl">{title && title}</h1>
+        <h1 className="font-bold text-xl lg:text-2xl">{title && title}</h1>
         <div>
           <Link href={href} className={buttonVariants({ variant: "link" })}>
             Shop now <span aria-hidden="true">&rarr;</span>
