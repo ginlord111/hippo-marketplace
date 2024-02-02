@@ -2,12 +2,26 @@ import Link from "next/link";
 import { title } from "process";
 import React from "react";
 import { buttonVariants } from "./ui/button";
+import { TQueryValidator } from "../lib/query-validator";
+import { trpc } from "../trpc";
 interface ProductReelTypes {
   title?: string;
   href: string;
+  query: TQueryValidator;
 }
 const ProductReel = (props: ProductReelTypes) => {
-  const { title, href } = props;
+  const FALLBACK_LIMIT = 4;
+  const { title, href, query } = props;
+  const { data } = trpc.getInfinitProduct.useInfiniteQuery(
+    {
+      limit: query.limit ?? FALLBACK_LIMIT,
+      query,
+    },
+    {
+      getNextPageParam: (lastpage) => lastpage.nextPage,
+    }
+  );
+
   return (
     <section>
       <div className="flex justify-between px-20 ">
