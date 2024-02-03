@@ -15,7 +15,7 @@ export const appRouter = router({
       })
     )
     .query(async ({ input }) => {
-      const { query, cursor  } = input;
+      const { query, cursor } = input;
       const { sort, limit, ...queryOpts } = query;
       const page = cursor || 1;
       const parsedQueryOpts: Record<string, { equals: string }> = {};

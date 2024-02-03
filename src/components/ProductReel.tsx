@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { title } from "process";
 import React from "react";
@@ -21,6 +22,8 @@ const ProductReel = (props: ProductReelTypes) => {
       getNextPageParam: (lastpage) => lastpage.nextPage,
     }
   );
+
+  console.log("data", data);
 
   return (
     <section>
