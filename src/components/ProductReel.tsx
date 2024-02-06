@@ -13,7 +13,7 @@ interface ProductReelTypes {
 const ProductReel = (props: ProductReelTypes) => {
   const FALLBACK_LIMIT = 4;
   const { title, href, query } = props;
-  const { data } = trpc.getInfinitProduct.useInfiniteQuery(
+  const { data: items } = trpc.getInfinitProduct.useInfiniteQuery(
     {
       limit: query.limit ?? FALLBACK_LIMIT,
       query,
@@ -22,8 +22,9 @@ const ProductReel = (props: ProductReelTypes) => {
       getNextPageParam: (lastpage) => lastpage.nextPage,
     }
   );
+  const products = items?.pages.flatMap((item) => item.products);
 
-  console.log("data", data);
+  console.log("data", items);
 
   return (
     <section>
