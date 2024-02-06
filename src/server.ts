@@ -8,7 +8,10 @@ import { getPayloadClient } from "./get-payload";
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
-export const createContext = ({req,res,}: trpcExpress.CreateExpressContextOptions) => {
+export const createContext = ({
+  req,
+  res,
+}: trpcExpress.CreateExpressContextOptions) => {
   return { res, req };
 };
 
@@ -23,7 +26,7 @@ const start = async () => {
       },
     },
   });
-  
+
   app.use(
     "/api/trpc",
     trpcExpress.createExpressMiddleware({
