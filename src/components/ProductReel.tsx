@@ -25,12 +25,11 @@ const ProductReel = (props: ProductReelTypes) => {
     }
   );
   const products = items?.pages.flatMap((item) => item.products);
-  let itemsToSell:(Product | null) [] = [];
-  if(products && products.length){
-    itemsToSell  = products;
-  }
-  else if (isLoading){
-    itemsToSell= new Array(query.limit ?? FALLBACK_LIMIT);
+  let itemsToSell: (Product | null)[] = [];
+  if (products && products.length) {
+    itemsToSell = products;
+  } else if (isLoading) {
+    itemsToSell = new Array(query.limit ?? FALLBACK_LIMIT);
   }
 
   console.log("data", items);
@@ -48,8 +47,8 @@ const ProductReel = (props: ProductReelTypes) => {
       <div className="relative">
         <div className="mt-6 flex items-center w-full">
           <div className="w-full grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-7 md:grid-cols-4 md:gap-y-10 lg:gap-x-8">
-            {itemsToSell.map((item) => (
-              <ProductListing item={item}/>
+            {itemsToSell.map((item, index) => (
+              <ProductListing item={item} index={index} />
             ))}
           </div>
         </div>
