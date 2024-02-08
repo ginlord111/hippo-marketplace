@@ -35,8 +35,8 @@ const ProductReel = (props: ProductReelTypes) => {
   console.log("data", items);
 
   return (
-    <section>
-      <div className="flex justify-between px-20 ">
+    <section className="px-20">
+      <div className="flex justify-between">
         <h1 className="font-bold text-xl lg:text-2xl">{title && title}</h1>
         <div>
           <Link href={href} className={buttonVariants({ variant: "link" })}>

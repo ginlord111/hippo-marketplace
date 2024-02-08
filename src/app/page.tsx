@@ -45,7 +45,11 @@ export default function Home() {
           </div>
         </div>
       </MaxWidthWrapper>
-      <ProductReel title="Brand New" href="/shop" query={{sort:"desc", limit:4}}/>
+      <ProductReel
+        title="Brand New"
+        href="/shop"
+        query={{ sort: "desc", limit: 4 }}
+      />
       <section className="border-t border-gray-200 bg-gray-50">
         <MaxWidthWrapper>
           <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0 mt-5">
