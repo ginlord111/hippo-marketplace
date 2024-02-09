@@ -50,13 +50,13 @@ export default function Home() {
         href="/shop"
         query={{ sort: "desc", limit: 4 }}
       />
-      <section className="border-t border-gray-200 bg-gray-50">
+      <section className="border-t border-gray-200 bg-gray-50 mt-3">
         <MaxWidthWrapper>
-          <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0 mt-5">
+          <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0 mt-5 overflow-y-auto">
             {perks.map((perk) => (
               <div
                 key={perk.name}
-                className="text-center md:flex md:items-start md:text-left lg:block lg:text-center"
+                className="text-center md:flex md:items-start md:text-left lg:block lg:text-center py-2"
               >
                 <div className="md:flex-shrink-0 flex justify-center">
                   <div className="h-16 w-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">

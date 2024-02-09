@@ -48,7 +48,7 @@ const ProductReel = (props: ProductReelTypes) => {
         <div className="mt-6 flex items-center w-full">
           <div className="w-full grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-7 md:grid-cols-4 md:gap-y-10 lg:gap-x-8">
             {itemsToSell.map((item, index) => (
-              <ProductListing item={item} index={index} />
+              <ProductListing key={item?.id} item={item} index={index} />
             ))}
           </div>
         </div>
