@@ -9,7 +9,6 @@ import "swiper/css/pagination";
 import type SwiperType from "swiper";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { url } from "inspector";
 interface ImageSliderProps {
   urls: Media[];
 }
