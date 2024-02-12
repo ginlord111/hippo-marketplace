@@ -15,7 +15,6 @@ interface ImageSliderProps {
 const ImageSlider = ({ urls }: ImageSliderProps) => {
   const [slide, setSlide] = useState<SwiperType | null>(null);
   const [index, setIndex] = useState<number>(0);
-  const [imageUrl, setImageUrl] = useState();
   const [sliderConfig, setSliderConfig] = useState({
     isBegin: true,
     isEnd: index === (urls.length ?? 0) - 1,
@@ -28,7 +27,7 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
     });
   }, [slide, urls, index]);
   const activeStyle =
-    "active:scale-[0.97] grid opacity-100 hover:scale-105 absolute top-1/2 -translate-y-1/2 aspect-square h-8 w-8 z-50 place-items-center rounded-full border-2 bg-white border-zinc-300";
+    "active:scale-[0.97] grid opacity-100 hover:scale-105 absolute top-1/2 -translate-y-1/2 aspect-square h-8 w-8 z-50 place-items-center rounded-full border-2 bg-white border-zinc-300 hover:bg-primary-300 text-primary-800 opacity-100";
   const hiddenIcon = "hidden text-gray-400";
   return (
     <div className="group relative bg-zinc-100 aspect-video overflow-hidden rounded-xl">
@@ -61,6 +60,10 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
         </button>
       </div>
       <Swiper
+        pagination={{
+          renderBullet: (_, className) =>
+            `<span class="roundedFull transition ${className}"></span>`,
+        }}
         onSwiper={(swiper) => setSlide(swiper)}
         modules={[Pagination]}
         className="h-full w-full"
