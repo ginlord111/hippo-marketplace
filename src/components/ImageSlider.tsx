@@ -12,7 +12,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface ImageSliderProps {
   urls: Media[];
 }
-const ImageSlider = ({ urls }: ImageSliderProps) => {
+const ImageSlider = ({ urls}: ImageSliderProps) => {
   const [slide, setSlide] = useState<SwiperType | null>(null);
   const [index, setIndex] = useState<number>(0);
   const [sliderConfig, setSliderConfig] = useState({
@@ -34,7 +34,8 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
       <div className="absolute z-10 inset-0 opacity-0 group-hover:opacity-100 transition">
         <button
           onClick={(e) => {
-            e.preventDefault;
+            e.stopPropagation();
+            e.preventDefault()
             slide?.slideNext();
           }}
           className={cn(
@@ -47,7 +48,8 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
         </button>
         <button
           onClick={(e) => {
-            e.preventDefault;
+            e.stopPropagation();
+            e.preventDefault()
             slide?.slidePrev();
           }}
           className={cn(
