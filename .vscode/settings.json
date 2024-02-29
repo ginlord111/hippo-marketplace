@@ -1,1 +1,7 @@
-{}
+{
+	"editor.tabSize": 2,
+	"prettier.useEditorConfig": true,
+	"prettier.requireConfig": true,
+	"editor.insertSpaces": true,
+	"editor.detectIndentation": true
+}
