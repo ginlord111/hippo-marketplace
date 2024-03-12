@@ -12,7 +12,7 @@ export const createContext = ({
   req,
   res,
 }: trpcExpress.CreateExpressContextOptions) => {
-  return { res, req };
+  return { res, req }; 
 };
 
 export type ExpressContext = inferAsyncReturnType<typeof createContext>; /// passing the type of the createContext
