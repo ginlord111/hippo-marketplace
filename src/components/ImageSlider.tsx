@@ -30,7 +30,7 @@ const ImageSlider = ({ urls}: ImageSliderProps) => {
     "active:scale-[0.97] grid opacity-100 hover:scale-105 absolute top-1/2 -translate-y-1/2 aspect-square h-8 w-8 z-50 place-items-center rounded-full border-2 bg-white border-zinc-300 hover:bg-primary-300 text-primary-800 opacity-100";
   const hiddenIcon = "hidden text-gray-400";
   return (
-    <div className="group relative bg-zinc-100 aspect-video overflow-hidden rounded-xl">
+    <div className="group relative bg-zinc-200 aspect-video overflow-hidden rounded-xl">
       <div className="absolute z-10 inset-0 opacity-0 group-hover:opacity-100 transition">
         <button
           onClick={(e) => {
